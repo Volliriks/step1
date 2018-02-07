@@ -11,7 +11,7 @@ public class Person {
 	private long id;
 
 
-	@ManyToOne
+	@ManyToOne()
 	private City city;
 
 	private String firstName;

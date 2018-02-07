@@ -15,4 +15,8 @@ public interface PersonRepository extends PagingAndSortingRepository<Person, Lon
 	@Query("SELECT p FROM Person p WHERE " +
 			"LOWER(p.lastName) LIKE LOWER(CONCAT('%',:searchTerm, '%')) " )
 	public List<City> findBySearchTerm(@Param("searchTerm") String searchTerm);
+
+	@Query("SELECT p FROM  Person p join p.city c  " +
+			"  WHERE LOWER(c.name) LIKE LOWER(CONCAT('%',:cityName, '%')) " )
+	public List<City> findByCityName(@Param("cityName") String cityName);
 }
